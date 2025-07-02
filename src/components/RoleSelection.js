@@ -15,7 +15,7 @@ const RoleSelection = () => {
       if (selectedRole === 'hire') {
         navigate('/hire-home');
       } else if (selectedRole === 'find-job') {
-        alert('Find Job feature coming soon!');
+        navigate('/find-job-home');
       }
     }
   };
