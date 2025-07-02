@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import JobSeekerNavbar from './JobSeekerNavbar';
-import './JobQRScan.css';
+import '../styles/JobQRScan.css';
 
 const JobQRScan = () => {
   const { jobId } = useParams();

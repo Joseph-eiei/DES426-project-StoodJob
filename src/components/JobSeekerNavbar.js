@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './BottomNavbar.css';
+import '../styles/BottomNavbar.css';
 
 const JobSeekerNavbar = () => {
   const navigate = useNavigate();

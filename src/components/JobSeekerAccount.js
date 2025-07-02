@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import JobSeekerNavbar from './JobSeekerNavbar';
-import './JobSeekerAccount.css';
+import '../styles/JobSeekerAccount.css';
 
 const JobSeekerAccount = () => {
   const navigate = useNavigate();

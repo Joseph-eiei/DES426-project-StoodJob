@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './RoleSelection.css';
+import '../styles/RoleSelection.css';
 
 const RoleSelection = () => {
   const [selectedRole, setSelectedRole] = useState('');

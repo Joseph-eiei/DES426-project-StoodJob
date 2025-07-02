@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './IDScan.css';
+import '../styles/IDScan.css';
 
 const IDScan = () => {
   const [acceptedTerms, setAcceptedTerms] = useState(false);

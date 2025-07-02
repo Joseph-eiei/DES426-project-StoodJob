@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import JobSeekerNavbar from './JobSeekerNavbar';
-import './JobDetailView.css';
+import '../styles/JobDetailView.css';
 
 const JobDetailView = () => {
   const { jobId } = useParams();

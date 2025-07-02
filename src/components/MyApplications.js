@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import JobSeekerNavbar from './JobSeekerNavbar';
-import './MyApplications.css';
+import '../styles/MyApplications.css';
 
 const MyApplications = () => {
   const navigate = useNavigate();

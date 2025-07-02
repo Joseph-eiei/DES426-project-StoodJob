@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import BottomNavbar from './BottomNavbar';
-import './ApplicantDetail.css';
+import '../styles/ApplicantDetail.css';
 
 const ApplicantDetail = () => {
   const { id } = useParams();

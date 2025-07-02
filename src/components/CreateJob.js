@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './CreateJob.css';
+import '../styles/CreateJob.css';
 
 const CreateJob = () => {
   const navigate = useNavigate();

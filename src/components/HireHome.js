@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BottomNavbar from './BottomNavbar';
-import './HireHome.css';
+import '../styles/HireHome.css';
 
 const HireHome = () => {
   const navigate = useNavigate();

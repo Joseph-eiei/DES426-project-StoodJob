@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import BottomNavbar from './BottomNavbar';
-import './PayEmployees.css';
+import '../styles/PayEmployees.css';
 
 const PayEmployees = () => {
   const { jobId } = useParams();

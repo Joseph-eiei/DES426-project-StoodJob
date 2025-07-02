@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 import BottomNavbar from './BottomNavbar';
-import './JobDetail.css';
+import '../styles/JobDetail.css';
 
 const JobDetail = () => {
   const { jobId } = useParams();

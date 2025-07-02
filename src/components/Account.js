@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import BottomNavbar from './BottomNavbar';
-import './Account.css';
+import '../styles/Account.css';
 
 const Account = () => {
   // Sample user data - in a real app this would come from a backend/auth system

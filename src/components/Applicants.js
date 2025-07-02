@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BottomNavbar from './BottomNavbar';
-import './Applicants.css';
+import '../styles/Applicants.css';
 
 const Applicants = () => {
   const navigate = useNavigate();
