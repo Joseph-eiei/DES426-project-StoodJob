@@ -1,0 +1,181 @@
+.applicants-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.applicants-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.applicants-header h1 {
+  color: #333;
+  font-size: 2rem;
+  margin: 0 0 8px 0;
+}
+
+.applicants-header p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+.applicants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.applicant-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+  cursor: pointer;
+}
+
+.applicant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.applicant-header {
+  margin-bottom: 16px;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.applicant-name {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.applicant-description {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.application-info {
+  margin-bottom: 16px;
+}
+
+.applied-job-title {
+  color: #333;
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.job-description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+}
+
+.application-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.application-date {
+  color: #888;
+  font-size: 12px;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.accepted {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge.declined {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.view-detail-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-detail-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.no-applicants {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.no-applicants p {
+  font-size: 18px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .applicants-container {
+    padding: 15px;
+  }
+  
+  .applicants-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .applicant-card {
+    padding: 16px;
+  }
+} 

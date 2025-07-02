@@ -1,0 +1,162 @@
+.login-signup-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-content {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.app-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  color: #666;
+  margin: 0 0 40px 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.phone-email-input {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #f0f0f0;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.phone-email-input:focus {
+  border-color: #667eea;
+}
+
+.continue-btn {
+  width: 100%;
+  padding: 16px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.continue-btn:hover:not(:disabled) {
+  background: #5a67d8;
+  transform: translateY(-1px);
+}
+
+.continue-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.divider span {
+  background: white;
+  padding: 0 20px;
+  color: #999;
+  font-size: 14px;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-btn {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #f0f0f0;
+  border-radius: 12px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  border-color: #ddd;
+  background: #fafafa;
+  transform: translateY(-1px);
+}
+
+.social-icon {
+  font-size: 20px;
+}
+
+.gmail-btn {
+  color: #db4437;
+}
+
+.facebook-btn {
+  color: #4267b2;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .login-signup-container {
+    padding: 16px;
+  }
+  
+  .login-content {
+    padding: 32px 24px;
+  }
+  
+  .app-title {
+    font-size: 28px;
+  }
+} 
