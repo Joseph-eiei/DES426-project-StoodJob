@@ -79,6 +79,30 @@ const ApplicantDetail = () => {
       status: "pending",
       availability: "Afternoons and evenings",
       experience: "2 years tutoring experience, Mathematics degree"
+    },
+    4: {
+      id: 4,
+      name: "John Doe",
+      profileImage: "👨‍💼",
+      description: "Experienced software engineer with 5 years of experience in web development.",
+      email: "john.doe@email.com",
+      phone: "(555) 123-4567",
+      rating: 4.8,
+      reviewCount: 12,
+      reviews: [
+        { text: "Excellent service and very friendly!", rating: 5 },
+        { text: "Always on time and professional", rating: 5 },
+        { text: "Great attention to detail", rating: 4 }
+      ],
+      jobTitle: "Software Engineer",
+      jobDescription: "Looking for a software engineer with 5 years of experience in web development",
+      wagePerHour: 25,
+      jobType: "Full-time",
+      hiringPeriod: 40,
+      applicationDate: "2024-01-16",
+      status: "pending",
+      availability: "Full-time, flexible hours",
+      experience: "5 years of experience in web development, JavaScript, React, Node.js"
     }
   }[id]);
 
@@ -162,25 +186,35 @@ const ApplicantDetail = () => {
         <div className="job-details-card">
           <h3>Application Details</h3>
           <div className="job-info">
-            <h4>{applicant.jobTitle}</h4>
+            <div className="job-header">
+              <h4>{applicant.jobTitle}</h4>
+              <span className="wage-highlight">${applicant.wagePerHour}/hr</span>
+            </div>
             <p className="job-description-detail">{applicant.jobDescription}</p>
             
-            <div className="job-details-grid">
-              <div className="detail-item">
-                <span className="detail-label">Wage:</span>
-                <span className="detail-value">${applicant.wagePerHour}/hr</span>
+            <div className="job-details-mobile">
+              <div className="detail-row">
+                <div className="detail-icon">💼</div>
+                <div className="detail-content">
+                  <span className="detail-label">Job Type</span>
+                  <span className="detail-value">{applicant.jobType}</span>
+                </div>
               </div>
-              <div className="detail-item">
-                <span className="detail-label">Type:</span>
-                <span className="detail-value">{applicant.jobType}</span>
+              
+              <div className="detail-row">
+                <div className="detail-icon">⏱️</div>
+                <div className="detail-content">
+                  <span className="detail-label">Duration</span>
+                  <span className="detail-value">{applicant.hiringPeriod} hours</span>
+                </div>
               </div>
-              <div className="detail-item">
-                <span className="detail-label">Duration:</span>
-                <span className="detail-value">{applicant.hiringPeriod} hours</span>
-              </div>
-              <div className="detail-item">
-                <span className="detail-label">Applied:</span>
-                <span className="detail-value">{applicant.applicationDate}</span>
+              
+              <div className="detail-row">
+                <div className="detail-icon">📅</div>
+                <div className="detail-content">
+                  <span className="detail-label">Applied</span>
+                  <span className="detail-value">{applicant.applicationDate}</span>
+                </div>
               </div>
             </div>
           </div>
