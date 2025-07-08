@@ -61,6 +61,10 @@ const Applicants = () => {
         <p>Review and manage applications for your job postings</p>
       </div>
 
+      <div className="applicants-list-label">
+        <h2>List of Applicants</h2>
+      </div>
+
       <div className="applicants-grid">
         {applicants.length === 0 ? (
           <div className="no-applicants">
@@ -69,32 +73,28 @@ const Applicants = () => {
         ) : (
           applicants.map(applicant => (
             <div key={applicant.id} className="applicant-card" onClick={() => handleViewDetail(applicant.id)}>
-              <div className="applicant-header">
+              <div className="card-content">
                 <div className="profile-section">
                   <div className="profile-image">{applicant.profileImage}</div>
-                  <div className="profile-info">
+                  <div className="profile-details">
                     <h3 className="applicant-name">{applicant.name}</h3>
-                    <p className="applicant-description">{applicant.description}</p>
+                    <p className="applied-job">{applicant.jobTitle}</p>
+                  </div>
+                  <div className="card-actions">
+                    <span className={`status-badge ${applicant.status}`}>{applicant.status}</span>
                   </div>
                 </div>
-              </div>
-              
-              <div className="application-info">
-                <h4 className="applied-job-title">Applied for: {applicant.jobTitle}</h4>
-                <p className="job-description">{applicant.jobDescription}</p>
                 
-                <div className="application-meta">
-                  <span className="application-date">Applied: {applicant.applicationDate}</span>
-                  <span className={`status-badge ${applicant.status}`}>{applicant.status}</span>
+                <div className="application-footer">
+                  <span className="application-date">{applicant.applicationDate}</span>
+                  <button className="view-btn" onClick={(e) => {
+                    e.stopPropagation();
+                    handleViewDetail(applicant.id);
+                  }}>
+                    View
+                  </button>
                 </div>
               </div>
-              
-              <button className="view-detail-btn" onClick={(e) => {
-                e.stopPropagation();
-                handleViewDetail(applicant.id);
-              }}>
-                View Details
-              </button>
             </div>
           ))
         )}
