@@ -235,30 +235,32 @@ const FindJobHome = () => {
               <div key={job.id} className="job-card" onClick={() => handleJobClick(job.id)}>
                 <div className="job-card-header">
                   <div className="company-logo">{job.image}</div>
-                  <div className="job-basic-info">
+                  <div className="job-main-info">
                     <h3 className="job-title">{job.title}</h3>
                     <p className="company-name">{job.company}</p>
-                  </div>
-                  <div className="job-wage">
-                    <span className="wage-amount">${job.wagePerHour}</span>
-                    <span className="wage-period">/hr</span>
+                    <p className="job-description">{job.description}</p>
                   </div>
                 </div>
 
-                <p className="job-description">{job.description}</p>
-
-                <div className="job-details">
-                  <div className="job-detail-item">
-                    <span className="detail-icon">📍</span>
-                    <span className="detail-text">{job.location} ({job.distance} km)</span>
+                <div className="job-card-footer">
+                  <div className="job-meta">
+                    <div className="job-meta-item">
+                      <span className="meta-icon">💰</span>
+                      <span className="meta-text">${job.wagePerHour}/hr</span>
+                    </div>
+                    <div className="job-meta-item">
+                      <span className="meta-icon">🏷️</span>
+                      <span className="meta-text">{job.jobType}</span>
+                    </div>
                   </div>
-                  <div className="job-detail-item">
-                    <span className="detail-icon">🏷️</span>
-                    <span className="detail-text">{job.jobType}</span>
-                  </div>
-                  <div className="job-detail-item">
-                    <span className="detail-icon">📅</span>
-                    <span className="detail-text">Posted {formatDate(job.date)}</span>
+                  <div className="job-location-date">
+                    <div className="location-info">
+                      <span className="meta-icon">📍</span>
+                      <span className="meta-text">{job.location} • {job.distance}km</span>
+                    </div>
+                    <div className="date-info">
+                      <span className="date-text">Posted {formatDate(job.date)}</span>
+                    </div>
                   </div>
                 </div>
               </div>
