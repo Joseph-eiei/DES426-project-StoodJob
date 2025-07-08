@@ -231,8 +231,18 @@
   }
   
   .filters-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+  }
+  
+  /* Hide labels on mobile for cleaner look */
+  .filter-group label {
+    display: none;
+  }
+  
+  .filter-group select {
+    padding: 12px 14px;
+    font-size: 15px;
   }
   
   .jobs-grid {
@@ -274,6 +284,16 @@
   
   .filters-section {
     padding: 12px;
+  }
+  
+  /* Hide labels on small mobile screens */
+  .filter-group label {
+    display: none;
+  }
+  
+  .filter-group select {
+    padding: 12px 14px;
+    font-size: 15px;
   }
   
   .job-card {

@@ -85,9 +85,9 @@ const FindJobHome = () => {
   const [filteredJobs, setFilteredJobs] = useState(allJobs);
   const [filters, setFilters] = useState({
     jobType: '',
-    locationRadius: 10,
-    minWage: 0,
-    sortBy: 'date'
+    locationRadius: '',
+    minWage: '',
+    sortBy: ''
   });
 
   // Filter and sort jobs whenever filters change
@@ -100,10 +100,14 @@ const FindJobHome = () => {
     }
 
     // Filter by location radius
-    filtered = filtered.filter(job => job.distance <= filters.locationRadius);
+    if (filters.locationRadius) {
+      filtered = filtered.filter(job => job.distance <= parseInt(filters.locationRadius));
+    }
 
     // Filter by minimum wage
-    filtered = filtered.filter(job => job.wagePerHour >= filters.minWage);
+    if (filters.minWage) {
+      filtered = filtered.filter(job => job.wagePerHour >= parseInt(filters.minWage));
+    }
 
     // Sort jobs
     filtered.sort((a, b) => {
@@ -115,6 +119,7 @@ const FindJobHome = () => {
         case 'distance':
           return a.distance - b.distance;
         case 'date':
+        case '':
         default:
           return new Date(b.date) - new Date(a.date);
       }
@@ -157,6 +162,7 @@ const FindJobHome = () => {
               value={filters.jobType} 
               onChange={(e) => handleFilterChange('jobType', e.target.value)}
             >
+              <option value="" disabled>Job Type</option>
               <option value="">All Types</option>
               <option value="Part-time">Part-time</option>
               <option value="Full-time">Full-time</option>
@@ -170,8 +176,9 @@ const FindJobHome = () => {
             <label>Distance (km)</label>
             <select 
               value={filters.locationRadius} 
-              onChange={(e) => handleFilterChange('locationRadius', parseInt(e.target.value))}
+              onChange={(e) => handleFilterChange('locationRadius', e.target.value)}
             >
+              <option value="" disabled>Distance</option>
               <option value={2}>Within 2 km</option>
               <option value={5}>Within 5 km</option>
               <option value={10}>Within 10 km</option>
@@ -184,8 +191,9 @@ const FindJobHome = () => {
             <label>Min Wage ($/hr)</label>
             <select 
               value={filters.minWage} 
-              onChange={(e) => handleFilterChange('minWage', parseInt(e.target.value))}
+              onChange={(e) => handleFilterChange('minWage', e.target.value)}
             >
+              <option value="" disabled>Min Wage</option>
               <option value={0}>Any wage</option>
               <option value={15}>$15+</option>
               <option value={18}>$18+</option>
@@ -200,6 +208,7 @@ const FindJobHome = () => {
               value={filters.sortBy} 
               onChange={(e) => handleFilterChange('sortBy', e.target.value)}
             >
+              <option value="" disabled>Sort by</option>
               <option value="date">Newest first</option>
               <option value="wage-high">Highest wage</option>
               <option value="wage-low">Lowest wage</option>

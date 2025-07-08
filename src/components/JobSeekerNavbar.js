@@ -7,7 +7,7 @@ const JobSeekerNavbar = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: '/find-job-home', label: 'Jobs', icon: '🔍' },
+    { path: '/find-job-home', label: 'Home', icon: '🔍' },
     { path: '/my-applications', label: 'Applications', icon: '📋' },
     { path: '/job-seeker-account', label: 'Account', icon: '👤' }
   ];
