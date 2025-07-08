@@ -150,11 +150,11 @@ const ApplicantDetail = () => {
             <div className="profile-image-large">{applicant.profileImage}</div>
             <div className="profile-info-main">
               <h2 className="applicant-name-large">{applicant.name}</h2>
-              <p className="applicant-description-large">{applicant.description}</p>
               <div className="rating-section">
                 <span className="rating">⭐ {applicant.rating}</span>
                 <span className="review-count">({applicant.reviewCount} reviews)</span>
               </div>
+              <p className="applicant-description-large">{applicant.description}</p>
             </div>
           </div>
           
