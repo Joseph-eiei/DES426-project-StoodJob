@@ -1,6 +1,6 @@
 .my-applications-container {
-  padding: 20px;
-  max-width: 1000px;
+  padding: 16px;
+  max-width: 600px;
   margin: 0 auto;
   min-height: 100vh;
   background-color: #f8f9fa;
@@ -12,20 +12,20 @@
 }
 
 .my-applications-header {
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   text-align: center;
 }
 
 .my-applications-header h1 {
   color: #333;
-  font-size: 2.2rem;
-  margin: 0 0 8px 0;
+  font-size: 1.8rem;
+  margin: 0 0 6px 0;
   font-weight: 700;
 }
 
 .my-applications-header p {
   color: #666;
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
 }
 
@@ -33,52 +33,107 @@
   display: flex;
   background: white;
   border-radius: 12px;
-  padding: 6px;
-  margin-bottom: 25px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 1px solid #e9ecef;
   overflow-x: auto;
 }
 
 .filter-tab {
   flex: 1;
-  padding: 12px 16px;
+  padding: 10px 12px;
   border: none;
   background: transparent;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: #666;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   white-space: nowrap;
-  min-width: 80px;
+  min-width: 70px;
 }
 
-.filter-tab:hover {
-  background-color: #f8f9fa;
-  color: #333;
-}
 
-.filter-tab.active {
+
+/* Filter Tab Color Coding */
+.filter-tab.filter-all.active {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.2);
+}
+
+.filter-tab.filter-pending.active {
+  background: linear-gradient(135deg, #ffc107 0%, #ffcd39 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(255, 193, 7, 0.3);
+}
+
+.filter-tab.filter-accepted.active {
+  background: linear-gradient(135deg, #28a745 0%, #34ce57 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+.filter-tab.filter-finished.active {
+  background: linear-gradient(135deg, #6c757d 0%, #7c858e 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(108, 117, 125, 0.3);
+}
+
+/* Inactive Tab Hover States */
+.filter-tab.filter-all:hover:not(.active) {
+  background-color: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+}
+
+.filter-tab.filter-pending:hover:not(.active) {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+}
+
+.filter-tab.filter-accepted:hover:not(.active) {
+  background-color: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.filter-tab.filter-finished:hover:not(.active) {
+  background-color: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
 }
 
 .applications-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
+/* Base Application Card */
 .application-card {
   background: white;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e9ecef;
-  transition: all 0.3s ease;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #e9ecef;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Status-based Color Coding */
+.application-card.status-pending {
+  border-left-color: #ffc107;
+  background: linear-gradient(135deg, #fffbf0 0%, #ffffff 100%);
+}
+
+.application-card.status-accepted {
+  border-left-color: #28a745;
+  background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
+}
+
+.application-card.status-finished {
+  border-left-color: #6c757d;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
 
 .application-card.clickable {
@@ -86,33 +141,38 @@
 }
 
 .application-card.clickable:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  border-color: #667eea;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
-.application-header {
+.application-card.clickable:active {
+  transform: translateY(0);
+}
+
+/* Card Header */
+.card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .job-info {
   display: flex;
   gap: 12px;
   flex: 1;
+  min-width: 0;
 }
 
 .company-logo {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   flex-shrink: 0;
 }
 
@@ -123,213 +183,172 @@
 
 .job-title {
   color: #333;
-  font-size: 1.1rem;
-  margin: 0 0 4px 0;
+  font-size: 1rem;
+  margin: 0 0 2px 0;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .company-name {
   color: #667eea;
-  font-size: 14px;
+  font-size: 13px;
   margin: 0 0 2px 0;
   font-weight: 500;
 }
 
 .job-location {
   color: #666;
-  font-size: 13px;
+  font-size: 12px;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }
 
-.application-status {
+/* Card Right Side */
+.card-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 .status-badge {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  color: white;
-  font-size: 12px;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: capitalize;
+  color: white;
+}
+
+.status-pending .status-badge {
+  background-color: #ffc107;
+}
+
+.status-accepted .status-badge {
+  background-color: #28a745;
+}
+
+.status-finished .status-badge {
+  background-color: #6c757d;
 }
 
 .status-icon {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .wage-info {
   color: #28a745;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
 }
 
-.application-details {
-  border-top: 1px solid #f1f3f4;
-  padding-top: 16px;
+/* Card Meta */
+.card-meta {
+  margin-bottom: 10px;
 }
 
-.application-meta {
+.meta-row {
   display: flex;
-  gap: 20px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .meta-item {
-  display: flex;
-  gap: 6px;
-  font-size: 13px;
-}
-
-.meta-label {
   color: #666;
+  font-size: 12px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.meta-value {
-  color: #333;
-  font-weight: 600;
-}
-
-.application-message {
-  margin-bottom: 12px;
-}
-
-.application-message p {
-  color: #666;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
-  padding: 12px;
-  background: #f8f9fa;
+/* Card Message */
+.card-message {
+  color: #555;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  background: rgba(102, 126, 234, 0.05);
   border-radius: 8px;
-  border-left: 3px solid #667eea;
+  border-left: 2px solid rgba(102, 126, 234, 0.2);
 }
 
+/* Action Hint */
 .action-hint {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 6px;
   padding: 8px 12px;
   background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
   border-radius: 8px;
   border: 1px solid #d4edda;
-  font-size: 13px;
+  font-size: 12px;
   color: #155724;
-  font-weight: 500;
+  font-weight: 600;
+  margin-top: 8px;
 }
 
-.hint-icon {
-  font-size: 16px;
-}
-
+/* No Applications */
 .no-applications {
   text-align: center;
-  padding: 60px 20px;
+  padding: 40px 20px;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .no-applications-icon {
-  font-size: 64px;
-  margin-bottom: 16px;
+  font-size: 48px;
+  margin-bottom: 12px;
 }
 
 .no-applications h3 {
   color: #333;
-  font-size: 1.3rem;
-  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  margin: 0 0 6px 0;
   font-weight: 600;
 }
 
 .no-applications p {
   color: #666;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0 0 20px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0 0 16px 0;
 }
 
 .browse-jobs-btn {
-  padding: 12px 24px;
+  padding: 10px 20px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .browse-jobs-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .my-applications-container {
-    padding: 15px;
-  }
-  
-  .my-applications-header h1 {
-    font-size: 1.8rem;
-  }
-  
-  .filter-tabs {
-    padding: 4px;
-  }
-  
-  .filter-tab {
-    padding: 10px 12px;
-    font-size: 13px;
-  }
-  
-  .application-card {
-    padding: 16px;
-  }
-  
-  .application-header {
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .application-status {
-    flex-direction: row;
-    align-items: center;
-    align-self: stretch;
-    justify-content: space-between;
-  }
-  
-  .job-info {
-    gap: 10px;
-  }
-  
-  .company-logo {
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-  }
-  
-  .application-meta {
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
+/* Mobile Optimizations */
 @media (max-width: 480px) {
   .my-applications-container {
-    padding: 10px;
+    padding: 12px;
   }
   
   .my-applications-header h1 {
@@ -337,29 +356,86 @@
   }
   
   .filter-tabs {
-    gap: 2px;
+    padding: 3px;
   }
   
   .filter-tab {
     padding: 8px 10px;
     font-size: 12px;
-    min-width: 70px;
+    min-width: 65px;
   }
   
   .application-card {
     padding: 14px;
   }
   
+  .card-header {
+    margin-bottom: 10px;
+  }
+  
+  .job-info {
+    gap: 10px;
+  }
+  
+  .company-logo {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
   .job-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   
   .company-name {
-    font-size: 13px;
+    font-size: 12px;
+  }
+  
+  .job-location {
+    font-size: 11px;
+  }
+  
+  .meta-row {
+    gap: 3px;
+  }
+  
+  .meta-item {
+    font-size: 11px;
+  }
+  
+  .card-message {
+    font-size: 12px;
+    padding: 8px 10px;
   }
   
   .action-hint {
-    font-size: 12px;
+    font-size: 11px;
     padding: 6px 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .my-applications-container {
+    padding: 10px;
+  }
+  
+  .application-card {
+    padding: 12px;
+  }
+  
+  .company-logo {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .job-title {
+    font-size: 0.9rem;
+  }
+  
+  .filter-tab {
+    padding: 6px 8px;
+    font-size: 11px;
+    min-width: 60px;
   }
 } 

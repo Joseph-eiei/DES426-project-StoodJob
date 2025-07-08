@@ -162,25 +162,25 @@ const MyApplications = () => {
       {/* Filter Tabs */}
       <div className="filter-tabs">
         <button 
-          className={`filter-tab ${selectedFilter === 'all' ? 'active' : ''}`}
+          className={`filter-tab filter-all ${selectedFilter === 'all' ? 'active' : ''}`}
           onClick={() => handleFilterChange('all')}
         >
           All ({getFilterCount('all')})
         </button>
         <button 
-          className={`filter-tab ${selectedFilter === 'pending' ? 'active' : ''}`}
+          className={`filter-tab filter-pending ${selectedFilter === 'pending' ? 'active' : ''}`}
           onClick={() => handleFilterChange('pending')}
         >
           Pending ({getFilterCount('pending')})
         </button>
         <button 
-          className={`filter-tab ${selectedFilter === 'accepted' ? 'active' : ''}`}
+          className={`filter-tab filter-accepted ${selectedFilter === 'accepted' ? 'active' : ''}`}
           onClick={() => handleFilterChange('accepted')}
         >
           Accepted ({getFilterCount('accepted')})
         </button>
         <button 
-          className={`filter-tab ${selectedFilter === 'finished' ? 'active' : ''}`}
+          className={`filter-tab filter-finished ${selectedFilter === 'finished' ? 'active' : ''}`}
           onClick={() => handleFilterChange('finished')}
         >
           Finished ({getFilterCount('finished')})
@@ -212,57 +212,49 @@ const MyApplications = () => {
           filteredApplications.map(application => (
             <div 
               key={application.id} 
-              className={`application-card ${application.status === 'accepted' ? 'clickable' : ''}`}
+              className={`application-card status-${application.status} ${application.status === 'accepted' ? 'clickable' : ''}`}
               onClick={() => handleApplicationClick(application)}
             >
-              <div className="application-header">
+              <div className="card-header">
                 <div className="job-info">
                   <div className="company-logo">{application.image}</div>
                   <div className="job-details">
                     <h3 className="job-title">{application.jobTitle}</h3>
                     <p className="company-name">{application.company}</p>
-                    <p className="job-location">{application.location}</p>
+                    <p className="job-location">📍 {application.location}</p>
                   </div>
                 </div>
-                <div className="application-status">
-                  <div 
-                    className="status-badge"
-                    style={{ backgroundColor: getStatusColor(application.status) }}
-                  >
+                <div className="card-right">
+                  <div className="status-badge">
                     <span className="status-icon">{getStatusIcon(application.status)}</span>
                     <span className="status-text">{application.status.charAt(0).toUpperCase() + application.status.slice(1)}</span>
                   </div>
-                  <div className="wage-info">
-                    ${application.wagePerHour}/hr
-                  </div>
+                  <div className="wage-info">${application.wagePerHour}/hr</div>
                 </div>
               </div>
 
-              <div className="application-details">
-                <div className="application-meta">
-                  <div className="meta-item">
-                    <span className="meta-label">Applied:</span>
-                    <span className="meta-value">{formatDate(application.appliedDate)}</span>
-                  </div>
+              <div className="card-meta">
+                <div className="meta-row">
+                  <span className="meta-item">
+                    📅 Applied: {formatDate(application.appliedDate)}
+                  </span>
                   {application.workDate && (
-                    <div className="meta-item">
-                      <span className="meta-label">Work Date:</span>
-                      <span className="meta-value">{formatDate(application.workDate)}</span>
-                    </div>
+                    <span className="meta-item">
+                      🗓️ Work: {formatDate(application.workDate)}
+                    </span>
                   )}
                 </div>
-                
-                <div className="application-message">
-                  <p>{application.message}</p>
-                </div>
-
-                {application.status === 'accepted' && (
-                  <div className="action-hint">
-                    <span className="hint-icon">👆</span>
-                    <span>Tap to access check-in/check-out QR codes</span>
-                  </div>
-                )}
               </div>
+              
+              <div className="card-message">
+                {application.message}
+              </div>
+
+              {application.status === 'accepted' && (
+                <div className="action-hint">
+                  👆 Tap to check-in/check-out
+                </div>
+              )}
             </div>
           ))
         )}
