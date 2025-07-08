@@ -155,6 +155,7 @@ const FindJobHome = () => {
 
       {/* Filters Section */}
       <div className="filters-section">
+        <h2 className="filters-title">Filter Jobs</h2>
         <div className="filters-row">
           <div className="filter-group">
             <label>Job Type</label>

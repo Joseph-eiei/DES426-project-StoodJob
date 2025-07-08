@@ -38,6 +38,13 @@
   border: 1px solid #e9ecef;
 }
 
+.filters-title {
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
 .filters-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -230,6 +237,11 @@
     padding: 15px;
   }
   
+  .filters-title {
+    font-size: 1.1rem;
+    margin: 0 0 14px 0;
+  }
+  
   .filters-row {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
@@ -284,6 +296,11 @@
   
   .filters-section {
     padding: 12px;
+  }
+  
+  .filters-title {
+    font-size: 1rem;
+    margin: 0 0 12px 0;
   }
   
   /* Hide labels on small mobile screens */
