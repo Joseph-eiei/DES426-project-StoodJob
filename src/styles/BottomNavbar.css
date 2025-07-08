@@ -22,6 +22,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   color: #666;
+  transform: scale(0.9);
 }
 
 .nav-item:hover {
@@ -29,11 +30,17 @@
 }
 
 .nav-item.active {
-  color: #667eea;
+  color: #2c3e50;
+  font-weight: bold;
+  transform: scale(1.0);
 }
 
 .nav-item.active .nav-icon {
-  transform: scale(1.1);
+  transform: scale(1.0);
+}
+
+.nav-item.active .nav-label {
+  font-weight: bold;
 }
 
 .nav-icon {
