@@ -15,7 +15,9 @@ const HireHome = () => {
       jobType: "Part-time",
       wagePerHour: 15,
       hiringPeriod: 20,
-      date: "2024-01-15"
+      date: "2024-01-15",
+      status: "active",
+      applicants: 3
     },
     {
       id: 2,
@@ -24,7 +26,9 @@ const HireHome = () => {
       jobType: "Flexible",
       wagePerHour: 18,
       hiringPeriod: 30,
-      date: "2024-01-20"
+      date: "2024-01-20",
+      status: "active",
+      applicants: 7
     },
     {
       id: 3,
@@ -33,7 +37,20 @@ const HireHome = () => {
       jobType: "Part-time",
       wagePerHour: 22,
       hiringPeriod: 15,
-      date: "2024-01-25"
+      date: "2024-01-25",
+      status: "active",
+      applicants: 3
+    },
+    {
+      id: 4,
+      title: "Weekend Cashier",
+      description: "Seeking responsible cashier for busy retail store, weekend shifts available",
+      jobType: "Part-time",
+      wagePerHour: 16,
+      hiringPeriod: 25,
+      date: "2024-01-28",
+      status: "draft",
+      applicants: 0
     }
   ]);
 
@@ -45,12 +62,30 @@ const HireHome = () => {
     navigate(`/job-detail/${jobId}`);
   };
 
+  const handleViewApplicants = (jobId, e) => {
+    e.stopPropagation();
+    navigate(`/job-detail/${jobId}`);
+  };
+
+  const handlePayEmployees = (jobId, e) => {
+    e.stopPropagation();
+    navigate(`/pay-employees/${jobId}`);
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric' 
+    });
+  };
+
   return (
     <div className="hire-home-container page-with-navbar">
       <div className="hire-home-header">
-        <h1>Your Job Postings</h1>
+        <h1>Your Jobs</h1>
         <button className="create-btn" onClick={handleCreateJob}>
-          Create Job
+          + New Job
         </button>
       </div>
 
@@ -61,31 +96,58 @@ const HireHome = () => {
           </div>
         ) : (
           jobs.map(job => (
-            <div key={job.id} className="job-card" onClick={() => handleJobClick(job.id)}>
-              <h3 className="job-title">{job.title}</h3>
+            <div 
+              key={job.id} 
+              className={`job-card ${job.status === 'draft' ? 'draft-card' : ''}`}
+              onClick={job.status === 'active' ? () => handleJobClick(job.id) : undefined}
+            >
+              <div className="job-header">
+                <h3 className="job-title">{job.title}</h3>
+                <span className={`job-status ${job.status}`}>
+                  {job.status === 'active' ? 'Active' : 'Draft'}
+                </span>
+              </div>
+              
               <p className="job-description">{job.description}</p>
               
               <div className="job-details">
                 <div className="job-detail">
-                  <span className="detail-label">Type:</span>
+                  <span className="detail-label">Type</span>
                   <span className="detail-value">{job.jobType}</span>
                 </div>
                 
                 <div className="job-detail">
-                  <span className="detail-label">Wage:</span>
-                  <span className="detail-value">${job.wagePerHour}/hr</span>
+                  <span className="detail-label">Wage</span>
+                  <span className="detail-value wage">${job.wagePerHour}/hr</span>
                 </div>
                 
                 <div className="job-detail">
-                  <span className="detail-label">Duration:</span>
-                  <span className="detail-value">{job.hiringPeriod} hours</span>
+                  <span className="detail-label">Duration</span>
+                  <span className="detail-value">{job.hiringPeriod}h</span>
                 </div>
                 
                 <div className="job-detail">
-                  <span className="detail-label">Posted:</span>
-                  <span className="detail-value">{job.date}</span>
+                  <span className="detail-label">Posted</span>
+                  <span className="detail-value">{formatDate(job.date)}</span>
                 </div>
               </div>
+
+              {job.status === 'active' && (
+                <div className="job-actions">
+                  <button 
+                    className="action-btn primary"
+                    onClick={(e) => handleViewApplicants(job.id, e)}
+                  >
+                    View Applicants ({job.applicants})
+                  </button>
+                  <button 
+                    className="action-btn secondary"
+                    onClick={(e) => handlePayEmployees(job.id, e)}
+                  >
+                    Pay Employees
+                  </button>
+                </div>
+              )}
             </div>
           ))
         )}
@@ -94,6 +156,6 @@ const HireHome = () => {
       <BottomNavbar />
     </div>
   );
-};
-
+  };
+  
 export default HireHome; 
