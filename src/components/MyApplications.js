@@ -218,9 +218,9 @@ const MyApplications = () => {
               <div className="card-header">
                 <div className="job-info">
                   <div className="company-logo">{application.image}</div>
-                  <div className="job-details">
+                  <div className="job-details-application">
                     <h3 className="job-title">{application.jobTitle}</h3>
-                    <p className="company-name">{application.company}</p>
+                    <p className="company-name-application">{application.company}</p>
                     <p className="job-location">📍 {application.location}</p>
                   </div>
                 </div>
