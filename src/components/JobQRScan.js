@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { QRCodeSVG } from 'qrcode.react';
 import JobSeekerNavbar from './JobSeekerNavbar';
 import '../styles/JobQRScan.css';
 
@@ -114,12 +113,9 @@ const JobQRScan = () => {
               </div>
               
               <div className="qr-code-wrapper">
-                <QRCodeSVG 
-                  value={`${window.location.origin}/checkin/${jobId}`} 
-                  size={160}
-                  level="M"
-                  includeMargin={true}
-                />
+                <div className="qr-placeholder-box">
+                  <div className="placeholder-text">QR Code Placeholder</div>
+                </div>
                 {(checkInStatus === 'checked-in' || checkInStatus === 'checked-out') && (
                   <div className="qr-overlay">
                     <div className="overlay-icon">✅</div>
@@ -141,6 +137,7 @@ const JobQRScan = () => {
               {!checkInStatus && (
                 <button className="demo-btn check-in-btn" onClick={simulateCheckIn}>
                   🔄 Simulate Check In
+                  (Only for testing)
                 </button>
               )}
             </div>
@@ -157,12 +154,9 @@ const JobQRScan = () => {
               </div>
               
               <div className="qr-code-wrapper">
-                <QRCodeSVG 
-                  value={`${window.location.origin}/checkout/${jobId}`} 
-                  size={160}
-                  level="M"
-                  includeMargin={true}
-                />
+                <div className="qr-placeholder-box">
+                  <div className="placeholder-text">QR Code Placeholder</div>
+                </div>
                 {checkInStatus === 'checked-out' && (
                   <div className="qr-overlay">
                     <div className="overlay-icon">✅</div>
@@ -190,6 +184,7 @@ const JobQRScan = () => {
               {checkInStatus === 'checked-in' && (
                 <button className="demo-btn check-out-btn" onClick={simulateCheckOut}>
                   🔄 Simulate Check Out
+                  (Only for testing)
                 </button>
               )}
             </div>
