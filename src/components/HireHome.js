@@ -17,6 +17,7 @@ const HireHome = () => {
       hiringPeriod: 20,
       date: "2024-01-15",
       status: "active",
+      applicationStatus: "open",
       applicants: 3
     },
     {
@@ -28,6 +29,7 @@ const HireHome = () => {
       hiringPeriod: 30,
       date: "2024-01-20",
       status: "active",
+      applicationStatus: "open",
       applicants: 7
     },
     {
@@ -39,6 +41,7 @@ const HireHome = () => {
       hiringPeriod: 15,
       date: "2024-01-25",
       status: "active",
+      applicationStatus: "closed",
       applicants: 3
     },
     {
@@ -72,6 +75,17 @@ const HireHome = () => {
     navigate(`/pay-employees/${jobId}`);
   };
 
+  const handleCloseApplications = (jobId, e) => {
+    e.stopPropagation();
+    setJobs(prevJobs => 
+      prevJobs.map(job => 
+        job.id === jobId 
+          ? { ...job, applicationStatus: "closed" }
+          : job
+      )
+    );
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', { 
@@ -103,9 +117,16 @@ const HireHome = () => {
             >
               <div className="job-header">
                 <h3 className="job-title">{job.title}</h3>
-                <span className={`job-status ${job.status}`}>
-                  {job.status === 'active' ? 'Active' : 'Draft'}
-                </span>
+                <div className="job-status-container">
+                  <span className={`job-status ${job.status}`}>
+                    {job.status === 'active' ? 'Active' : 'Draft'}
+                  </span>
+                  {job.status === 'active' && (
+                    <span className={`application-status ${job.applicationStatus}`}>
+                      {job.applicationStatus === 'open' ? 'Open' : 'Closed'}
+                    </span>
+                  )}
+                </div>
               </div>
               
               <p className="job-description">{job.description}</p>
@@ -138,7 +159,7 @@ const HireHome = () => {
                     className="action-btn primary"
                     onClick={(e) => handleViewApplicants(job.id, e)}
                   >
-                    View Applicants ({job.applicants})
+                    View Employees ({job.applicants})
                   </button>
                   <button 
                     className="action-btn secondary"
@@ -146,6 +167,14 @@ const HireHome = () => {
                   >
                     Pay Employees
                   </button>
+                  {job.applicationStatus === 'open' && (
+                    <button 
+                      className="action-btn close-btn"
+                      onClick={(e) => handleCloseApplications(job.id, e)}
+                    >
+                      Close Applications
+                    </button>
+                  )}
                 </div>
               )}
             </div>

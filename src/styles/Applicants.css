@@ -38,6 +38,78 @@
   padding-left: 4px;
 }
 
+/* Job Categories Accordion Styles */
+.job-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.job-category {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+}
+
+.job-category-header {
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.job-category-header:hover {
+  background: lightgray;
+}
+
+.job-category-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.job-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.applicant-count {
+  font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.expand-icon {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.job-applicants-list {
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.job-applicants-list.collapsed {
+  max-height: 0;
+  padding: 0;
+}
+
+.job-applicants-list.expanded {
+  max-height: 2000px;
+  padding: 16px;
+}
+
 .applicants-grid {
   display: flex;
   flex-direction: column;
@@ -192,6 +264,26 @@
     font-size: 1.1rem;
     padding-left: 2px;
   }
+
+  .job-categories {
+    gap: 12px;
+  }
+
+  .job-category-header {
+    padding: 14px 16px;
+  }
+
+  .job-title {
+    font-size: 1rem;
+  }
+
+  .applicant-count {
+    font-size: 0.85rem;
+  }
+
+  .job-applicants-list.expanded {
+    padding: 12px;
+  }
   
   .card-content {
     padding: 14px;
@@ -230,6 +322,26 @@
 @media (max-width: 480px) {
   .applicants-container {
     padding: 8px;
+  }
+
+  .job-category-header {
+    padding: 12px 14px;
+  }
+
+  .job-title {
+    font-size: 0.95rem;
+  }
+
+  .applicant-count {
+    font-size: 0.8rem;
+  }
+
+  .expand-icon {
+    font-size: 12px;
+  }
+
+  .job-applicants-list.expanded {
+    padding: 10px;
   }
   
   .card-content {

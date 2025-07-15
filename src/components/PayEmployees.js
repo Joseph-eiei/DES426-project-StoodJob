@@ -36,7 +36,8 @@ const PayEmployees = () => {
       checkIn: "2024-01-15 09:00",
       checkOut: "2024-01-15 17:00",
       status: "checked-out",
-      paid: false
+      paid: false,
+      paidAt: null
     },
     {
       id: 4,
@@ -44,7 +45,8 @@ const PayEmployees = () => {
       checkIn: "2024-01-15 10:00",
       checkOut: "2024-01-15 16:30",
       status: "checked-out",
-      paid: false
+      paid: false,
+      paidAt: null
     },
     {
       id: 5,
@@ -52,7 +54,8 @@ const PayEmployees = () => {
       checkIn: "2024-01-14 14:00",
       checkOut: "2024-01-14 18:00",
       status: "checked-out",
-      paid: true
+      paid: true,
+      paidAt: "2024-01-14 18:30"
     }
   ];
 
@@ -88,10 +91,11 @@ const PayEmployees = () => {
   };
 
   const handlePayEmployee = (employeeId) => {
+    const paymentTimestamp = new Date().toISOString();
     setCheckedOutEmployees(prev => 
       prev.map(emp => 
         emp.id === employeeId 
-          ? { ...emp, paid: true }
+          ? { ...emp, paid: true, paidAt: paymentTimestamp }
           : emp
       )
     );
@@ -173,6 +177,13 @@ const PayEmployees = () => {
                     <span className="detail-label">Check Out:</span>
                     <span className="detail-value">{formatTime(employee.checkOut)}</span>
                   </div>
+                  
+                  {employee.paid && employee.paidAt && (
+                    <div className="work-detail">
+                      <span className="detail-label">Paid At:</span>
+                      <span className="detail-value">{formatTime(employee.paidAt)}</span>
+                    </div>
+                  )}
                   
                   <div className="work-detail total-pay">
                     <span className="detail-label">Total Pay:</span>

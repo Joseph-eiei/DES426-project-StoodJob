@@ -11,7 +11,8 @@ const CreateJob = () => {
     jobType: '',
     date: '',
     hiringPeriod: '',
-    wagePerHour: ''
+    wagePerHour: '',
+    paymentType: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -32,7 +33,7 @@ const CreateJob = () => {
     }
   };
 
-  const validateForm = () => {
+  const validateForm = (isDraft = false) => {
     const newErrors = {};
     
     if (!formData.title.trim()) {
@@ -59,6 +60,10 @@ const CreateJob = () => {
       newErrors.wagePerHour = 'Valid wage per hour is required';
     }
     
+    if (!isDraft && !formData.paymentType) {
+      newErrors.paymentType = 'Payment type is required';
+    }
+    
     return newErrors;
   };
 
@@ -70,6 +75,20 @@ const CreateJob = () => {
       // In a real app, this would save to backend
       console.log('Job created:', formData);
       alert('Job created successfully!');
+      navigate('/hire-home');
+    } else {
+      setErrors(formErrors);
+    }
+  };
+
+  const handleCreateDraft = (e) => {
+    e.preventDefault();
+    const formErrors = validateForm(true); // Pass true for draft validation
+    
+    if (Object.keys(formErrors).length === 0) {
+      // In a real app, this would save to backend as draft
+      console.log('Job draft created:', formData);
+      alert('Job draft saved successfully!');
       navigate('/hire-home');
     } else {
       setErrors(formErrors);
@@ -181,9 +200,43 @@ const CreateJob = () => {
             </div>
           </div>
 
+          <div className="form-group">
+            <label>Payment Type *</label>
+            <div className="radio-group">
+              <label className="radio-option">
+                <input
+                  type="radio"
+                  name="paymentType"
+                  value="Card"
+                  checked={formData.paymentType === 'Card'}
+                  onChange={handleInputChange}
+                />
+                <span className="radio-custom"></span>
+                <span className="payment-icon">💳</span>
+                Card
+              </label>
+              <label className="radio-option">
+                <input
+                  type="radio"
+                  name="paymentType"
+                  value="Cash"
+                  checked={formData.paymentType === 'Cash'}
+                  onChange={handleInputChange}
+                />
+                <span className="radio-custom"></span>
+                <span className="payment-icon">💵</span>
+                Cash
+              </label>
+            </div>
+            {errors.paymentType && <span className="error-message">{errors.paymentType}</span>}
+          </div>
+
           <div className="form-actions">
             <button type="button" onClick={handleCancel} className="cancel-btn">
               Cancel
+            </button>
+            <button type="button" onClick={handleCreateDraft} className="draft-btn">
+              Create Draft
             </button>
             <button type="submit" className="create-btn">
               Create Job
